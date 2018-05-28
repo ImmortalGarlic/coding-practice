@@ -1,0 +1,14 @@
+# two sum
+class Solution(object):
+    def twoSum(self, num, target):
+        index = [None, None]
+        num_ = [x for x in num]
+        for idx, l in enumerate(num):
+            index[0] = idx
+            num_[idx] = None
+            res = target - l
+            if res in num_:
+                index[1] = num_.index(res)
+                return index
+            else:
+                index[0] = None
