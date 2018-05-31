@@ -1,0 +1,32 @@
+'''
+Note: this is the solution by @caikehe
+Link: https://goo.gl/EkR7MM
+Memo:
+    0. Idea is the same. I also tried to loop through the string and expand from the centered location
+    1. I spent too much time on thinking odd/even if conditions like: 
+        s[idx-1] == s[idx] or s[idx] == s[idx+1]
+    2. Also spent too much time thinking about boundry index: for idx in range(1:length-1)
+       My implementation always gets ugly when it comes to boundry cases
+'''
+class Solution:
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        length = len(s)
+        temp = ''
+        def expander(l, r):
+            while l>=0 and r<length:
+                if s[l] == s[r]:
+                    l -= 1
+                    r += 1
+                else:
+                    break
+            return s[l+1:r]
+        for idx in range(length):
+            result1 = expander(idx, idx)
+            result2 = expander(idx, idx+1)
+            lst = [temp, result1, result2]
+            temp = max(lst, key=len)
+        return temp
