@@ -22,3 +22,24 @@ def prime_checker(number):
             return False
         else:
             return True
+
+'''
+3. Quick sort
+'''
+def quicksort(array):
+    low = []
+    middle = []
+    high = []
+    
+    if len(array) > 1:
+        pivot = array[0]
+        for i in array:
+            if i < pivot:
+                low.append(i)
+            elif i == pivot:
+                middle.append(i)
+            else:
+                high.append(i)
+        return quicksort(low)+middle+quicksort(high)
+    else:
+        return array
