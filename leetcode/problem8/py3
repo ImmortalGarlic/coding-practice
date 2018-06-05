@@ -1,0 +1,32 @@
+class Solution:
+    def myAtoi(self, string):
+        """
+        :type str: str
+        :rtype: int
+        """
+        string = string.strip()
+        pass_str = [str(x) for x in list(range(10))]
+        if len(string) == 1 and string in pass_str:
+            return int(string)
+        elif len(string) == 1 and string not in pass_str:
+            return 0
+        plus_minus = ['+', '-']
+        candidate = ''
+        cnt = 0
+        while cnt < len(string):
+            if string[cnt] in plus_minus and candidate == '':
+                candidate += string[cnt]
+                cnt += 1
+            if string[cnt] in pass_str:
+                candidate += string[cnt]
+                cnt += 1
+            else:
+                break
+        if candidate in ['', '+', '-']:
+            return 0
+        elif int(candidate) <= -2**31:
+            return -2**31
+        elif int(candidate) >= 2**31 - 1:
+            return 2**31 - 1
+        else:
+            return int(candidate)
