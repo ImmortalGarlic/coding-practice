@@ -4,4 +4,5 @@ This repository contains my solutions for online coding problems and some Python
 ### Contents
 - [leetcode problems solutions](leetcode)
 - [codility lessons solutions](codility)
+- [interview problems](interview)
 - [some useful functions](toolfunctions)
